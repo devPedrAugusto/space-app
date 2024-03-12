@@ -5,10 +5,15 @@ import CampoTexto from '../CampoTexto';
 const Headerstylized = styled.header`
     padding: 60px 0;
     display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
     justify-content: space-between;
-  img{
-    max-width: 212px;
-  }
+
+    @media (max-width: 580px) {justify-content: center;}
+
+    img{
+      max-width: 302px;
+    }
 `;
 
 const Cabecalho = () => {

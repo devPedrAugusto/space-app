@@ -6,8 +6,6 @@ const ListStylized = styled.ul`
     list-style: none;
     padding: 0px;
     margin: 0px;
-    float: left;
-
 `
 
 const ListaLateral = () => {
