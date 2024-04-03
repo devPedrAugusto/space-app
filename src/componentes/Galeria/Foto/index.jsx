@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import expandirIcon from '/icones/expandir.png'
 import favorito from '/icones/favorito.png'
+import { ContextFotos } from '../../../context/FotosContext'
 
 
 const FigureStylized = styled.figure`
+    box-shadow: 8px 6px 15px #00000037;
     max-width: 100%;
     margin: 0;
     display: flex;
@@ -13,15 +15,18 @@ const FigureStylized = styled.figure`
     background-color: #001634;
 
     & > img{
-        max-width: 100%;
-        border-radius: 20px 20px 0px 0px;
-    }
+        border-radius: 20px 20px 0px 0px;}
 
     figcaption{
         color: white;
         padding: 10px;
         box-sizing: border-box;
         padding: 12px;
+
+        footer{
+            display: flex;
+        }
+
         h3{
             font-family: "GandhiSansBold";
         }
@@ -39,13 +44,20 @@ const FigureStylized = styled.figure`
 `
 const ButtonCountainer = styled.div`
     display: flex;
+
     button{
+        cursor: pointer;
         background: none;
         border: none;
     }
 `;
 
+
+
 const Foto = ({ titulo, fonte, path, id, tagId }) => {
+
+    const {fotoSelecionada, setFotoSelecionada, setFotosFavoritas} = useContext(ContextFotos);
+
     return (
             <FigureStylized>
                 <img src={path} alt={fonte} />
@@ -54,10 +66,10 @@ const Foto = ({ titulo, fonte, path, id, tagId }) => {
                     <footer>
                         <h4>{fonte}</h4>
                         <ButtonCountainer>
-                            <button>
+                            <button onClick={() => setFotosFavoritas(...setFotosFavoritas, id)}>
                                 <img src={favorito} alt="" />
                             </button>
-                            <button>
+                            <button onClick={() => {aoAlterar(id)}} >
                                 <img src={expandirIcon} alt="" />
                             </button>
                         </ButtonCountainer>

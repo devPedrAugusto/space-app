@@ -1,21 +1,27 @@
-import React from 'react'
 import Titulo from '../Titulo'
 import styled from 'styled-components'
 import Foto from './Foto'
+import { useContext } from 'react'
+import { ContextFotos } from '../../context/FotosContext'
+import Populares from './Populares'
 
 const GaleriaCountainer = styled.section`
     display: flex;
+    flex-grow: 1;
+    gap: 25px;
 
-    @media (max-width: 680px) {
+    @media (max-width: 780px) {
         flex-wrap: wrap;
-        &, & > div, ul{
-            align-items: center;
+        @media (max-width: 680px) {
+            &, ul, div{
+                align-items: center;
             justify-content: center;
+        }
         }
 
     }
+    
     & > div{
-        @media (min-width: 680px) {align-items: start;}
         display: flex;    
         flex-direction: column;
     }
@@ -26,20 +32,19 @@ const GaleriaCountainer = styled.section`
         display: flex;
         flex-wrap: wrap;
         gap: 25px;
-
-        @media(max-width: 680px){
-        }
     }
 `
 
-const Galeria = ({ fotos }) => {
 
+const Galeria = () => {
+    const {fotos, setFotos} = useContext(ContextFotos);
     return (
-        <GaleriaCountainer classname='galeria'>
+        <GaleriaCountainer>
             <div>
-                <Titulo textAlign='center'>Navegue pela galeria:</Titulo>
+                <Titulo>Navegue pela galeria:</Titulo>
                 <ul>
-                    {fotos.map((item) => <li>{<Foto
+                    {fotos.map((item) => <li key={item.id}>{
+                        <Foto
                         titulo={item.titulo}
                         fonte={item.fonte}
                         path={item.path}
@@ -48,7 +53,7 @@ const Galeria = ({ fotos }) => {
                     />}</li>)}
                 </ul>
             </div>
-                <Titulo textAlign='center'>Populares</Titulo>
+            <Populares/>
         </GaleriaCountainer>
     )
 }

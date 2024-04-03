@@ -14,8 +14,6 @@ const BannerStylized = styled.div`
   
   @media(max-width: 680px){
     height: 228px;
-    width: 95%;
-    margin: auto;
   }
 
   h1{

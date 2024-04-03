@@ -6,8 +6,10 @@ const InputTextStylized = styled.div`
     align-items: center;
     border: 2px solid;
     margin: 30px 0px;
-    border-image: linear-gradient(to right, #C98CF1, #7B78E5)1;
+    border-radius: 10px;
+    border-color:  #C98CF1;
         input{
+        border-radius: 10px;
         background: transparent;
         border: none;
         color: white;

@@ -6,8 +6,8 @@ import Banner from "./componentes/Banner"
 import imgBanner from './assets/banner.png'
 import Galeria from "./componentes/Galeria"
 import Tags from "./componentes/Tags"
-import fotoJson from './fotos.json'
-import { useState } from "react"
+import ModalZoom from "./componentes/ModalZoom"
+import { FotosProvider } from "./context/FotosContext"
 
 const FundoGradiente = styled.div`
 background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -30,14 +30,21 @@ const MainCountainer = styled.section`
 const ColumnCountainer = styled.section`
   display: flex;
   flex-direction: column;
+  @media(max-width: 680px){
+    margin: 10px;
+  }
 `
+
+const aoAlterar =  (id) => {
+  console.log(id)
+}
+
 
 function App() {
 
-  const [fotos, setFotos] = useState(fotoJson)
-
   return (
     <FundoGradiente>
+      <FotosProvider>
       <EstilosGlobais />
       <AppCountainer>
         <Cabecalho />
@@ -47,12 +54,13 @@ function App() {
             <Banner imgBanner={imgBanner}>
               <h1>A galeria mais completa de fotos do espaço!</h1>
             </Banner>
-            <Tags titulo='Busque por tags:'
-              tags={['Estrelas', 'Galáxias', 'Lua', 'Planetas', 'Todas']} />
-            <Galeria fotos = {fotos}/>
+            <Tags titulo='Busque por tags:' idAtivo={0}/>
+            <Galeria/>
           </ColumnCountainer>
         </MainCountainer>
       </AppCountainer>
+      <ModalZoom/>
+      </FotosProvider>
     </FundoGradiente>
   )
 }

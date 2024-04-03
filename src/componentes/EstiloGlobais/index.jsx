@@ -84,6 +84,9 @@ textarea {
   line-height: 1.15; 
   margin: 0; 
 }
+
+ul{margin: 0}
+
 button,
 input { 
   overflow: visible;
