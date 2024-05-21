@@ -8,14 +8,16 @@ export const ContextFotos = createContext();
 export const FotosProvider = ({ children }) => {
     const [fotos, setFotos] = useState(fotoJson)
     const [fotoSelecionada, setFotoSelecionada] = useState()
-    const [fotosFavoritas, setFotosFavoritas] = useState();
-        
+    const [fotosFavoritas, setFotosFavoritas] = useState([]);
+
     return (
         <ContextFotos.Provider value={{
             fotos,
             setFotos,
             fotoSelecionada,
-            setFotoSelecionada
+            setFotoSelecionada,
+            fotosFavoritas,
+            setFotosFavoritas
         }}>
             {children}
         </ContextFotos.Provider>

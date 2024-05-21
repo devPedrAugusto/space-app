@@ -28,16 +28,17 @@ const ModalZoom = () => {
         <>
             {fotoSelecionada &&
                 <>
-                <Overlay/>               
-                <DialogStylized open={!!fotoSelecionada}>
-                    <Foto
-                        titulo={fotoSelecionada.titulo}
-                        fonte={fotoSelecionada.fonte}
-                        path={fotoSelecionada.path}
-                        id={fotoSelecionada.id}
-                        tagId={fotoSelecionada.tagId}
-                    />
-                </DialogStylized>
+                    <Overlay />
+                    <DialogStylized open={!!fotoSelecionada}>
+                        <Foto
+                            titulo={fotoSelecionada.titulo}
+                            fonte={fotoSelecionada.fonte}
+                            path={fotoSelecionada.path}
+                            id={fotoSelecionada.id}
+                            tagId={fotoSelecionada.tagId}
+                            favoritado={fotoSelecionada.favoritado}
+                        />
+                    </DialogStylized>
                 </>}
         </>
     )

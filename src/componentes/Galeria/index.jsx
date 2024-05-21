@@ -1,7 +1,7 @@
 import Titulo from '../Titulo'
 import styled from 'styled-components'
 import Foto from './Foto'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ContextFotos } from '../../context/FotosContext'
 import Populares from './Populares'
 
@@ -37,23 +37,27 @@ const GaleriaCountainer = styled.section`
 
 
 const Galeria = () => {
-    const {fotos, setFotos} = useContext(ContextFotos);
+    const { fotos, setFotos } = useContext(ContextFotos);
+
     return (
         <GaleriaCountainer>
             <div>
                 <Titulo>Navegue pela galeria:</Titulo>
                 <ul>
-                    {fotos.map((item) => <li key={item.id}>{
-                        <Foto
-                        titulo={item.titulo}
-                        fonte={item.fonte}
-                        path={item.path}
-                        id={item.id}
-                        tagId={item.tagId}
-                    />}</li>)}
+                    {
+                        fotos.map((item) => <li key={item.id}>{
+                            <Foto
+                                fonte={item.fonte}
+                                titulo={item.titulo}
+                                path={item.path}
+                                id={item.id}
+                                tagId={item.tagId}
+                                favoritado={item.favoritado}
+                            />}</li>)
+                    };
                 </ul>
             </div>
-            <Populares/>
+            <Populares />
         </GaleriaCountainer>
     )
 }

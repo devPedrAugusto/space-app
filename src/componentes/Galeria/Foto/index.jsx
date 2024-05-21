@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import expandirIcon from '/icones/expandir.png'
 import favorito from '/icones/favorito.png'
+import favoritoAtivo from '/icones/favorito-ativo.png'
 import { ContextFotos } from '../../../context/FotosContext'
+import { useFavoritos } from '../../../hooks/useFavoritos'
 
 
 const FigureStylized = styled.figure`
@@ -41,7 +43,8 @@ const FigureStylized = styled.figure`
             }
         
     }
-`
+`;
+
 const ButtonCountainer = styled.div`
     display: flex;
 
@@ -54,28 +57,29 @@ const ButtonCountainer = styled.div`
 
 
 
-const Foto = ({ titulo, fonte, path, id, tagId }) => {
 
-    const {fotoSelecionada, setFotoSelecionada, setFotosFavoritas} = useContext(ContextFotos);
+const Foto = ({ titulo, fonte, path, id, tagId, favoritado }) => {
+    const { aoAlterar } = useFavoritos();
+    const { fotoSelecionada, setFotoSelecionada, fotos, setFotos } = useContext(ContextFotos);
 
     return (
-            <FigureStylized>
-                <img src={path} alt={fonte} />
-                <figcaption>
-                    <h3>{titulo}</h3>
-                    <footer>
-                        <h4>{fonte}</h4>
-                        <ButtonCountainer>
-                            <button onClick={() => setFotosFavoritas(...setFotosFavoritas, id)}>
-                                <img src={favorito} alt="" />
-                            </button>
-                            <button onClick={() => {aoAlterar(id)}} >
-                                <img src={expandirIcon} alt="" />
-                            </button>
-                        </ButtonCountainer>
-                    </footer>
-                </figcaption>
-            </FigureStylized>
+        <FigureStylized>
+            <img src={path} alt={fonte} />
+            <figcaption>
+                <h3>{titulo}</h3>
+                <footer>
+                    <h4>{fonte}</h4>
+                    <ButtonCountainer>
+                        <button onClick={() => aoAlterar(id)}>
+                            <img src={favoritado ? favoritoAtivo : favorito} alt="" />
+                        </button>
+                        <button onClick={() => fotoSelecionada ? setFotoSelecionada() : setFotoSelecionada({ titulo, fonte, path, id, tagId, favoritado })} >
+                            <img src={expandirIcon} alt="" />
+                        </button>
+                    </ButtonCountainer>
+                </footer>
+            </figcaption>
+        </FigureStylized>
 
     )
 }

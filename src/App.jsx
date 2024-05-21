@@ -35,9 +35,7 @@ const ColumnCountainer = styled.section`
   }
 `
 
-const aoAlterar =  (id) => {
-  console.log(id)
-}
+
 
 
 function App() {
