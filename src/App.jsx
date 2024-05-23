@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import EstilosGlobais from "./componentes/EstiloGlobais"
-import Cabecalho from "./componentes/cabecalho"
+import Cabecalho from "./componentes/Cabecalho"
 import ListaLateral from "./componentes/ListaLateral"
 import Banner from "./componentes/Banner"
 import imgBanner from './assets/banner.png'
@@ -43,21 +43,21 @@ function App() {
   return (
     <FundoGradiente>
       <FotosProvider>
-      <EstilosGlobais />
-      <AppCountainer>
-        <Cabecalho />
-        <MainCountainer>
-          <ListaLateral />
-          <ColumnCountainer>
-            <Banner imgBanner={imgBanner}>
-              <h1>A galeria mais completa de fotos do espaço!</h1>
-            </Banner>
-            <Tags titulo='Busque por tags:' idAtivo={0}/>
-            <Galeria/>
-          </ColumnCountainer>
-        </MainCountainer>
-      </AppCountainer>
-      <ModalZoom/>
+        <EstilosGlobais />
+        <AppCountainer>
+          <Cabecalho />
+          <MainCountainer>
+            <ListaLateral />
+            <ColumnCountainer>
+              <Banner imgBanner={imgBanner}>
+                <h1>A galeria mais completa de fotos do espaço!</h1>
+              </Banner>
+              <Tags titulo='Busque por tags:' idAtivo={0} />
+              <Galeria />
+            </ColumnCountainer>
+          </MainCountainer>
+        </AppCountainer>
+        <ModalZoom />
       </FotosProvider>
     </FundoGradiente>
   )
